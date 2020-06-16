@@ -10,7 +10,7 @@ This software remove the proprietary extensions from the video so can be played 
 
 This is a port of the C application by [Ralph Spitzner](https://www.spitzner.org/kkmoon.html), and also based on the original chipcaco written in node-JS by [Sven Jacobs](https://github.com/svenjacobs/chipcaco)
 
-If you are looking for a video player and converter for Windows with Graphical Interface for Chinese Cameras I recomend to use HIP2P Client (from IPCAM XIN).
+If you are looking for a video player and converter for Windows with Graphical Interface for Chinese Cameras recordings I recomend to use HIP2P Client (from IPCAM XIN).
 
 ## Installation
 
