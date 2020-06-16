@@ -8,7 +8,7 @@ The H.264 recordings downloaded from the camera can't be played or converted by 
 
 This software remove the proprietary extensions from the video so can be played on any video player.
 
-This is a port of the C application by [Ralph Spitzner](https://www.spitzner.org/kkmoon.html), and algo based on the original chipcaco written in node-JS by [Sven Jacobs](https://github.com/svenjacobs/chipcaco)
+This is a port of the C application by [Ralph Spitzner](https://www.spitzner.org/kkmoon.html), and also based on the original chipcaco written in node-JS by [Sven Jacobs](https://github.com/svenjacobs/chipcaco)
 
 If you are looking for a video player and converter for Windows with Graphical Interface for Chinese Cameras I recomend to use HIP2P Client (from IPCAM XIN).
 
