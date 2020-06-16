@@ -6,9 +6,9 @@ for converting `.264` files produced by some Chinese IP cameras like TPTEK, IeGe
 
 The H.264 recordings downloaded from the camera can't be played or converted by common applications like [VLC](https://www.videolan.org/vlc/). 
 
-This software remove the proprietary extensions have been added to these before they can be played or converted.
+This software remove the proprietary extensions from the video so can be played on any video player.
 
-This is a port of the C application by [Ralph Spitzner](https://www.spitzner.org/kkmoon.html) and based on the Node-JS application by [Sven Jacobs](https://github.com/svenjacobs/chipcaco)
+This is a port of the C application by [Ralph Spitzner](https://www.spitzner.org/kkmoon.html), and algo based on the original chipcaco written in node-JS by [Sven Jacobs](https://github.com/svenjacobs/chipcaco)
 
 If you are looking for a video player and converter for Windows with Graphical Interface for Chinese Cameras I recomend to use HIP2P Client (from IPCAM XIN).
 
