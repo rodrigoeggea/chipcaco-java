@@ -15,7 +15,7 @@ If you are looking for a video player and converter for Windows with Graphical I
 ## Installation
 
 Download JAR file chipcaco.jar: 
-[chipcaco.jar]   
+[chipcaco.jar](https://github.com/eggea/chipcaco-java/target/chipcaco.jar)
 
 ## Usage
     
@@ -25,10 +25,10 @@ where `<src>` is the source file produced by the camera. The output file has sam
 
 **Note**: The produced file must likely be additionally processed by `ffmpeg` or similar applications before it can be played. Example:
 
-Only copy H264 frames and fix FPS:
+Only copy H264 frames and fix FPS (can be played in VLC)
 
     ffmpeg -framerate 25 -i intermediate.h264 -c copy video.h264
 
-Convertind to MP4: 
+Convertind to MP4 (can be player in any Video Player or Browser)
 
     ffmpeg -framerate 25 -i intermediate.264 video.mp4   
