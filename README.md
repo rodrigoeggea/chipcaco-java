@@ -25,10 +25,10 @@ where `<src>` is the source file produced by the camera. The output file has sam
 
 **Note**: The produced file must likely be additionally processed by `ffmpeg` or similar applications before it can be played. Example:
 
-Only copy H264 frames and fix FPS (can be played in VLC)
+Only copy H264 frames and fix FPS (can be played only in VLC)
 
     ffmpeg -framerate 25 -i intermediate.h264 -c copy video.h264
 
-Convertind to MP4 (can be player in any Video Player or Browser)
+Converting to MP4 and fix FPS (can be player in any Video Player or Browser)
 
     ffmpeg -framerate 25 -i intermediate.264 video.mp4   
