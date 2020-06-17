@@ -15,7 +15,7 @@ If you are looking for a video player and converter for Windows with Graphical I
 ## Installation
 
 Download JAR file chipcaco.jar: 
-[chipcaco.jar](https://raw.githubusercontent.com/eggea/chipcaco-java/master/chipcaco-java/target/chipcaco.jar)
+[chipcaco.jar](https://raw.githubusercontent.com/eggea/chipcaco-java/master/chipcaco-java/bin/chipcaco.jar)
 
 ## Usage
     
