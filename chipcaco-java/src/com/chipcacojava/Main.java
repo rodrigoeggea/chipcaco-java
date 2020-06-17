@@ -40,7 +40,7 @@ public class Main {
 		System.out.println("  -v software version");
 	}
 	
-	public static void main(String args[]) throws IOException {
+	public static void main(String args[]) {
 		String str = Arrays.toString(args);
 		if (args.length == 0) {
 			showUsage();
@@ -54,7 +54,7 @@ public class Main {
 				showUsage();
 			} else {
 				String srcVideo = args[0];
-				chipcacoExec(srcVideo,true,Level.OFF);
+				chipcacoExec(srcVideo,false,Level.OFF);
 			}
 		}
 		if (args.length == 2) {
@@ -64,7 +64,7 @@ public class Main {
 			}
 			if (args[0].equals("-d")) {
 				String srcVideo = args[1];
-				chipcacoExec(srcVideo,true,Level.ALL);
+				chipcacoExec(srcVideo,false,Level.ALL);
 			}
 		}
 		if (args.length == 3) {
@@ -96,6 +96,7 @@ public class Main {
 		}
 		catch (IOException e) {
 			System.out.println(e.getMessage());
+			System.exit(1);
 		}		
 		System.out.println("Done.");
 		System.out.println("Output file=" + converter.getDstVideoPath());
