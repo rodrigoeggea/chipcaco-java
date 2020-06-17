@@ -98,8 +98,9 @@ public class Main {
 			System.out.println(e.getMessage());
 		}		
 		System.out.println("Done.");
-		System.out.println("File information:");		
-		System.out.format(Locale.US,"Video size=%dx%d  FPS=%.2f  Length=%s\n",
+		System.out.println("Output file=" + converter.getDstVideoPath());
+		//System.out.println("File information:");		
+		System.out.format(Locale.US,"File information: Video size=%dx%d  FPS=%.2f  Length=%s\n",
 				converter.getWidth(),converter.getHeight(),converter.getFramerate(),converter.getVideoHourMinSec());
 		System.out.println();
 		System.out.println("Run ffmpeg to fix framerate and convert to MP4:");
