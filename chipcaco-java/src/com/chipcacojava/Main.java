@@ -20,14 +20,14 @@ import org.apache.commons.io.FilenameUtils;
  * java -jar chipcaco.jar recording.264 
  * ffmpeg -framerate <desired framerate> -i recording.h264 recording.mp4
  * 
- * Version: 1.0.1
- * Date: 16/06/2020
+ * Version: 1.0.2
+ * Date: 17/06/2020
  * 
  * @author Rodrigo Eggea (rodrigo.eggea@gmail.com) 
  * 
  */
 public class Main {
-	public static final String VERSION = "1.0.1";
+	public static final String VERSION = "1.0.2";
 
 	public static void showUsage() {
 		System.out.println("Java chipcaco is a tool for converting recording files from Chinese cameras \n"

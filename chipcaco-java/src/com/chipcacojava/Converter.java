@@ -27,6 +27,8 @@ public class Converter {
 	private int dataSize = 0;
 	private float framerate = 0;
 	private Level logLevel = Level.OFF;
+	private int iSliceCounter=0;
+	private int pSliceCounter=0;
 
 	public boolean isWriteAudio() {
 		return writeAudio;
@@ -195,7 +197,12 @@ public class Converter {
 				if ((nal_unit_type == 7)) {
 					SPScounter++;
 				}
-				if ((nal_unit_type == 1) || (nal_unit_type == 5)) {
+				if((nal_unit_type == 5)) {
+					iSliceCounter++;
+					frameCount++;
+				}
+				if ((nal_unit_type == 1)) {
+					pSliceCounter++;
 					frameCount++;
 				}
 				/******************************************
@@ -216,12 +223,11 @@ public class Converter {
 				byte[] audiodata = new byte[datasize];
 				inputFile.skipBytes(4); // Skip 4 unkown bytes {0x0001,0x5000}
 				inputFile.read(audiodata, 0, datasize);
-				outAudioFile.write(audiodata, 0, datasize);
+				if(writeAudio)outAudioFile.write(audiodata, 0, datasize);
 
 			} else if (str.subSequence(0, 4).equals("HXFI")) {
 				log.info("Header HXFI found");
 				videoLength = BinUtil.getIntfromLE(header, 8);
-				framerate = (float) frameCount / (videoLength / 1000);
 				break;
 			} else {
 				log.severe("HEADER ERROR - CCODE=" + str.substring(0, 4));
@@ -240,13 +246,27 @@ public class Converter {
 		log.info("Input video file  = " + srcVideoPath);
 		log.info("Output video file = " + dstVideoPath);
 		if(writeAudio)log.info("Output audio file = " + dstAudioPath);
-		log.info("Video length= " + videoLength + " seconds");
-		log.info("Resolution= " + width + " x " + height);
-		log.info("Framerate= " + framerate + " FPS");
-		log.info("Number of frames= " + frameCount);
-		log.info("SPS Counter= " + SPScounter);
-		log.info("Number of HXVF headers= " + hxvfCounter);
-		log.info("Number of HXAF headers= " + hxafCounter);
+		
+		framerate = frameCount/ (videoLength / 1000F);
+		log.info("Video length = " + videoLength + " ms");
+		log.info("Resolution   = " + width + " x " + height);
+		
+		log.info("I-Frames     = " + iSliceCounter);
+		log.info("P-Frames     = " + pSliceCounter);		
+		log.info("I+P Frames   = " + frameCount);
+		
+		float keyFrameInterval=((pSliceCounter/iSliceCounter) + 1);
+		log.info("Keyframe interval = " + keyFrameInterval + " frames");
+		
+		float keyFrameIntervalMs=keyFrameInterval*(float)videoLength/frameCount;
+		log.info("Keyframe interval = " + keyFrameIntervalMs + " ms");
+		
+		float eachFrameTime=keyFrameIntervalMs/keyFrameInterval;
+		log.info("Frame time = " + eachFrameTime + " ms");
+		
+		log.info("Framerate  =  " + framerate + " FPS");
+		log.info("HXVF headers= " + hxvfCounter);
+		log.info("HXAF headers= " + hxafCounter);
 		log.info("-------------------------------");
 	}
 
@@ -274,7 +294,7 @@ public class Converter {
 		int sampleRate = 8000;    // 8000, 44100, etc..
 		int byteRate = 8000;      // SampleRate * NumChannels * BitsPerSample/8
 		short blockAlign = 2;     // NumChannels * BitsPerSample/8
-		short bitsPerSample = 16; // 8-bits = 8, 16-bits=
+		short bitsPerSample = 16; // 8-bits = 8, 16-bits= 16
 
 		// Writing the header
 		file.writeBytes(chunkID);

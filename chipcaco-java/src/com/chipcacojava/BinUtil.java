@@ -22,7 +22,7 @@ public class BinUtil {
 	 * @param offset Number of bytes to skip before read the integer.
 	 * @return
 	 */
-	public static int getIntegerfromLE(byte buffer[], int offset) {
+	public static int getIntfromLEs(byte buffer[], int offset) {
 		ByteBuffer headerBuffer = ByteBuffer.allocateDirect(buffer.length);
 		headerBuffer.order(ByteOrder.LITTLE_ENDIAN);
 		headerBuffer.put(buffer);
