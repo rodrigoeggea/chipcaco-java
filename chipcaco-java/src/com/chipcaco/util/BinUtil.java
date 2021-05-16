@@ -1,4 +1,4 @@
-package com.chipcacojava;
+package com.chipcaco.util;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -23,7 +23,8 @@ public class BinUtil {
 	 * @return
 	 */
 	public static int getIntfromLEs(byte buffer[], int offset) {
-		ByteBuffer headerBuffer = ByteBuffer.allocateDirect(buffer.length);
+		//ByteBuffer headerBuffer = ByteBuffer.allocateDirect(buffer.length);
+		ByteBuffer headerBuffer = ByteBuffer.allocate(buffer.length);
 		headerBuffer.order(ByteOrder.LITTLE_ENDIAN);
 		headerBuffer.put(buffer);
 		int result = headerBuffer.getInt(offset);

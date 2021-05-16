@@ -1,4 +1,4 @@
-package com.chipcacojava;
+package com.chipcaco.util;
 
 import java.util.concurrent.TimeUnit;
 
@@ -9,7 +9,7 @@ public class TimeUtil {
 	 * @param milliseconds
 	 * @return
 	 */
-	static String convertMillisToHourMinSec(int milliseconds) {
+	public static String convertMillisToHourMinSec(int milliseconds) {
 		int seconds = (int) (milliseconds / 1000) % 60;
 		int minutes = (int) ((milliseconds / (1000 * 60)) % 60);
 		int hours   = (int) ((milliseconds / (1000 * 60 * 60)) % 24);
@@ -25,7 +25,7 @@ public class TimeUtil {
 	 * @param milliseconds
 	 * @return
 	 */
-	static String convertMsToHMS(int milliseconds) {
+	public static String convertMsToHMS(int milliseconds) {
 		long hours = TimeUnit.MILLISECONDS.toHours(milliseconds);
         milliseconds -= TimeUnit.HOURS.toMillis(hours);
         long minutes = TimeUnit.MILLISECONDS.toMinutes(milliseconds);
@@ -41,7 +41,7 @@ public class TimeUtil {
 	 * @param seconds
 	 * @return Formated time in <b>hour : min : sec</b> 
 	 */
-	static String convertToHourMinSec(int seconds) {
+	public static String convertToHourMinSec(int seconds) {
 		int sec     = (seconds % 60);
 		int min     = (seconds / 60) % 60;
 		int hours   = (seconds / 3600) % 24;

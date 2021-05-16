@@ -1,4 +1,4 @@
-package com.chipcacojava;
+package com.chipcaco.util;
 
 /*
  * (C) 2004 - Geotechnical Software Services
