@@ -5,10 +5,10 @@ import com.chipcaco.cmdline.Cmdline;
 public class TestConverter {
 	public static void main(String args[]) throws Exception {
 		//usage();
-		version();
+		//version();
 		//withDebug();
 		//withoutDebug();
-		//multipleFiles();
+		multipleFiles();
 	}
 	
 	static void usage() throws Exception {
@@ -39,7 +39,9 @@ public class TestConverter {
 	
 	static void multipleFiles() throws Exception {
 		// Without debug
-		String[] args = {"*.*"};
+		String filename1 ="C:\\TPTEK\\sample1.264"; 
+		String filename2 ="C:\\TPTEK\\sample2.264";
+		String[] args = {filename1,filename2};
 		Cmdline.main(args);
 	}
 }

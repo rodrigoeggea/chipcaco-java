@@ -3,6 +3,7 @@ package com.chipcaco.util;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.MemoryHandler;
 
 /**
  * Return a single global logger for the application.

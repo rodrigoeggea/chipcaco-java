@@ -2,24 +2,14 @@ package com.chipcaco.cmdline;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.io.comparator.LastModifiedFileComparator;
-import org.mp4parser.muxer.builder.SyncSampleIntersectFinderImpl;
-
-import com.chipcaco.mp4parser.Mp4Muxer;
 import com.chipcaco.util.LogUtil;
-import com.chipcacojava.Converter;
 
 /**
  * Java-chipcaco (Chinese IP Camera Converter) is a Java application for
@@ -31,13 +21,13 @@ import com.chipcacojava.Converter;
  * 
  * Example: java -jar chipcaco.jar camera_recording.264
  * 
- * Version: 1.0.3 Date: 15/05/2021
+ * Version: 1.0.4 Date: 16/05/2021
  * 
  * @author Rodrigo Eggea (rodrigo.eggea@gmail.com)
  * 
  */
 public class Cmdline {
-	public static final String VERSION = "1.0.3";
+	public static final String VERSION = "1.0.4";
 	private static final Logger logger = LogUtil.getSimpleLogger();
 	
 	public static void showUsage() {
@@ -75,14 +65,6 @@ public class Cmdline {
 			System.exit(0);
 		}
 		
-		// Enable debug
-		if(argList.contains("-d")) {
-			logger.setLevel(Level.INFO);
-		} else {
-			//logger.setLevel(Level.OFF);
-			logger.setLevel(Level.OFF);
-		}
-		
 		// Allow multiple files in arguments
 		// Filter only valid filenames
 		List<String> filesToConvert = argList.stream()
@@ -104,7 +86,22 @@ public class Cmdline {
 			System.exit(-1);
 		}
 		
+		// Enable debug
+		if(argList.contains("-d")) {
+			if(filesToConvert.size()>1) {
+				System.out.println("Debug allowed only for a single file.");
+				System.exit(-1);
+			} else {
+				logger.setLevel(Level.INFO);
+			}
+		} else {
+			//logger.setLevel(Level.OFF);
+			logger.setLevel(Level.OFF);
+		}
+		
 		// Converting files
+		System.out.format("Converting file: %s \n\n", filesToConvert);
+
 		for(String fileToConvert : filesToConvert) {
 			new Thread(new Runnable() {
 				@Override
