@@ -21,14 +21,5 @@ Download JAR file chipcaco.jar:
     
     java -jar chipcaco.jar <source file> 
 
-where `<src>` is the source file produced by the camera. The output file has same name but with .h264 extension.
+where `<src>` is the source file produced by the camera. The output file has same name but with MP4 extension. It will try to extract audio file with the same name but with WAV externsion (experimental).
 
-**Note**: The produced file must likely be additionally processed by `ffmpeg` or similar applications before it can be played. Example:
-
-Only copy H264 frames and fix FPS (can be played only in VLC)
-
-    ffmpeg -framerate 25 -i intermediate.h264 -c copy video.h264
-
-Converting to MP4 and fix FPS (can be player in any Video Player or Browser)
-
-    ffmpeg -framerate 25 -i intermediate.264 video.mp4   
